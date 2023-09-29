@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: justify;
+    width: 100%;
+    margin: 0.5rem auto;
+    padding: 0 1rem;
+    max-width: 1200px;
+    border: 0px solid #131212;
+    border-radius: 40px;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+    height: 70px;
+}
+
+.title{
+    font-size: 16pt;
+    font-weight: 700;
+    margin: 0 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    color: #000;
+
+}
+
+.hour {
+    margin-left: auto; /* Push the <p> tag to the right */
+    padding: 1rem 1rem 1rem 1rem;
+    color: #000;
+    margin-right: 2rem;
+}

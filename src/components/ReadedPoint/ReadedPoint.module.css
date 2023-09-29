@@ -1,0 +1,6 @@
+.circle {
+    width: 15px; /* Set the width of the circle */
+    height: 15px; /* Set the height of the circle */
+    background-color: #2441e0; /* Set the background color */
+    border-radius: 50%; /* Make the element a circle by setting border-radius to 50% */
+}

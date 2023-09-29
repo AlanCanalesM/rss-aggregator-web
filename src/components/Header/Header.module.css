@@ -1,0 +1,28 @@
+.image{
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #fff;
+    transition: all 0.3s ease-in-out;
+    max-width: 40px;
+    max-height: 40px;
+    
+}
+.container{
+    display: flex;
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    align-items: center;
+}
+
+.title{
+    
+    margin-left: 2rem;
+    font-size: 21pt;
+    font-weight: 500;
+    color: #000000;
+}
