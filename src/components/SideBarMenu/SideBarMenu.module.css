@@ -1,0 +1,32 @@
+.container {
+    background-color: #f2f2f3;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 2rem;
+}
+
+.item {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    
+    margin-left: auto;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.item:hover {
+    background-color: #dbe0ff;
+}
+
+.item:hover .title {
+    color: #1a1a1a;
+}
