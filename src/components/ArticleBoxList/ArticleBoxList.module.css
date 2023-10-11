@@ -1,11 +1,14 @@
-.list{
+.list-container {
+    max-height: 85vh;  /* Set your desired maximum height */
+    overflow-y: auto;
+  }
+  
+  .list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 auto;
     padding: 0 15px;
     width: 90%;
-    
-
-    
-}
+  }
+  
