@@ -1,24 +1,10 @@
 import FeedListStyle from './FeedList.module.css';
 import Feed from '../Feed/Feed';
-import { useState, useEffect } from 'react';
-import axios from 'axios'
+import useFeeds from '../../hooks/useFeeds';
 
-function FeedList (){
+function FeedList() {
 
-    const [feeds, setFeeds] = useState([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:8080/v1/feeds')
-    .then(response => {
-        setFeeds(response.data)
-        console.log(response.data)
-        
-    })
-    .catch(error => {
-        console.log(error)
-    }
-    )
-    }, [])
+    const { feeds } = useFeeds();
 
     return (
         <div className={FeedListStyle.list}>
