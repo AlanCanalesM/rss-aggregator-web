@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function useUsers() {
-  const [user, setUser] = useState(null);
+  const [loginError, setLoginError] = useState(null);
+  const navigate = useNavigate()
 
   function signin(username, password) {
     axios
@@ -11,14 +14,24 @@ function useUsers() {
         password: password,
       })
       .then((response) => {
-        if (response.status != 200) {
-          console.log("Error");
+        if (response.status !== 200) {
+          setLoginError(true);
+        } else {
+          setLoginError(false); // Reset the error state if the login is successful
+          navigate('/home',{
+            state: {user:response.data},
+            replace: true
+          })
         }
-        setUser(response.data);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          setLoginError(true);
+        }
       });
   }
 
-  return { signin, user };
+  return { signin, loginError };
 }
 
 export default useUsers;

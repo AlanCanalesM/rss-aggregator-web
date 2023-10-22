@@ -12,7 +12,7 @@ function LoginPage() {
     formState: { errors },
   } = useForm()
 
-  const { signin } = useUsers()
+  const { signin, loginError } = useUsers()
 
   const onSubmit = (data) => {
 
@@ -36,6 +36,7 @@ function LoginPage() {
             <input type="password" {...register("password", { required: true })} />
             {errors.password && <span>This field is required</span>}
           </div>
+          {loginError && <span>Invalid username or password</span>}
           <button type="submit">Login</button>
         </form>
       </div>

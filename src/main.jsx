@@ -2,17 +2,33 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import ArticleBoxList from './components/ArticleBoxList/ArticleBoxList'
-import SideBar from './components/SideBar/SideBar'
-import SecondaryPage from './components/SecondaryPage/SecondaryPage'
-import LoginPage from './components/LoginPage/LoginPage.jsx'
+import HomePage from './routes/HomePage/HomePage.jsx'
+import LoginPage from './routes/LoginPage/LoginPage.jsx'
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+  }
+]);
 
 ReactDOM.createRoot(document.getElementById('roots')).render(
   <React.StrictMode>
       <div className='maindiv'>
       {/* <SideBar />
       <SecondaryPage /> */}
-      <LoginPage />
+      <RouterProvider router={router} />
       </div>
   </React.StrictMode>,
 )
