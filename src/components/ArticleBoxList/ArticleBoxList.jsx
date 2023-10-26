@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import ArticleBox from '../ArticleBox/ArticleBox';
 import ArticleBoxListStyle from './ArticleBoxList.module.css';
 import ArticleContentModal from '../ArticleContentModal/ArticleContentModal';
-import usePosts from '../../hooks/usePosts'; 
+import usePosts from '../../hooks/usePosts';
 
-function ArticleBoxList() {
-  const { posts, selectedArticle, handleArticleClick, handleCloseModal } = usePosts();
-
+function ArticleBoxList({ apikey }) {
+  const { posts, selectedArticle, handleArticleClick, handleCloseModal, getPostsForFeed } = usePosts();
+  
   return (
     <div className={ArticleBoxListStyle['list-container']}>
       <div className={ArticleBoxListStyle.list}>

@@ -4,14 +4,12 @@ import Header from "../Header/Header";
 import { useLocation } from "react-router-dom";
 
 
-function SecondaryPage() {
-  const location = useLocation();
-  const user = location.state.user;
+function SecondaryPage({apikey, username}) {
   
   return (
     <div className={SecondaryPageStyle.container}>
-      <Header username={user["username"]}/>
-      <ArticleBoxList />
+      <Header username={username}/>
+      <ArticleBoxList apikey={apikey}/>
     </div>
   );
 }

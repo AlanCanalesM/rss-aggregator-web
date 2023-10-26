@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 function useFeeds() {
   const [feeds, setFeeds] = useState([]);
+  const [feedsFollows, setFeedsFollows] = useState([]);
 
+  function getFeeds(){
   useEffect(() => {
     axios
       .get("http://localhost:8080/v1/feeds")
@@ -14,8 +16,28 @@ function useFeeds() {
         console.log(error);
       });
   }, []);
+  }
 
-  return { feeds };
+  function getFeedsFollows(apiKey){
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:8080/v1/feed_follows", {
+          headers: {
+            Authorization: `ApiKey ${apiKey}`,
+          },
+        })
+        .then((response) => {
+          setFeedsFollows(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
+  }
+
+  return { feeds, getFeeds, feedsFollows, getFeedsFollows };
 }
 
 export default useFeeds;

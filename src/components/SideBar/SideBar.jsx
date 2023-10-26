@@ -4,13 +4,13 @@ import SideBarMenu from '../SideBarMenu/SideBarMenu';
 import FeedList from '../FeedList/FeedList';
 
 
-function SideBar() {
+function SideBar({apikey}) {
 
     return (
         <div className={SideBarStyles.container}>
             <SideBarTitle />
             <SideBarMenu />
-            <FeedList />
+            <FeedList apikey={apikey}/>
         </div>
     )
 }
