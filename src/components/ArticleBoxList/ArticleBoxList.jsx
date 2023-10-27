@@ -4,9 +4,14 @@ import ArticleBoxListStyle from './ArticleBoxList.module.css';
 import ArticleContentModal from '../ArticleContentModal/ArticleContentModal';
 import usePosts from '../../hooks/usePosts';
 
-function ArticleBoxList({ apikey }) {
+function ArticleBoxList({ apikey, selectedFeedId}) {
+
+
   const { posts, selectedArticle, handleArticleClick, handleCloseModal, getPostsForFeed } = usePosts();
-  
+ 
+      getPostsForFeed(selectedFeedId, apikey);
+   
+
   return (
     <div className={ArticleBoxListStyle['list-container']}>
       <div className={ArticleBoxListStyle.list}>

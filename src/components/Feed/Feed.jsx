@@ -1,14 +1,14 @@
 import FeedStyle from './Feed.module.css';
 import feedicon from '../../assets/rssicon.png';
+import usePosts from '../../hooks/usePosts';
+import { useEffect } from 'react';
+import axios from 'axios';
 
-function Feed({name, id}) {
+function Feed({name, onClick}) {
 
-    function handleClick() {
-        console.log('Feed clicked ' + id);
-    }
 
     return (
-        <div className={FeedStyle.feed} onClick={handleClick}>
+        <div className={FeedStyle.feed} onClick={onClick}>
             <img src={feedicon} alt='icon' className={FeedStyle.icon} />
 
             <div className={FeedStyle.title}>

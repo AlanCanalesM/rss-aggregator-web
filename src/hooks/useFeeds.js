@@ -18,15 +18,11 @@ function useFeeds() {
   }, []);
   }
 
-  function getFeedsFollows(apiKey){
+  function getFeedsFollows(){
 
     useEffect(() => {
       axios
-        .get("http://localhost:8080/v1/feed_follows", {
-          headers: {
-            Authorization: `ApiKey ${apiKey}`,
-          },
-        })
+        .get("http://localhost:8080/v1/feeds")
         .then((response) => {
           setFeedsFollows(response.data);
           console.log(response.data);

@@ -5,7 +5,6 @@ function usePosts() {
   const [posts, setPosts] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState(null);
 
-
   function handleArticleClick({ title, description }) {
     setSelectedArticle({ title, description });
   }
@@ -14,24 +13,7 @@ function usePosts() {
     setSelectedArticle(null);
   }
 
-  function getAllPosts(apiKey) {
-    useEffect(() => {
-      axios
-        .get('http://localhost:8080/v1/posts', {
-          headers: {
-            Authorization: `ApiKey ${apiKey}`,
-          },
-        })
-        .then((response) => {
-          setPosts(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, []);
-  }
-
-  function getPostsForFeed(apiKey, feedId) {
+  function getPostsForFeed(feedId, apiKey) {
     useEffect(() => {
       axios
         .get(`http://localhost:8080/v1/posts_feed/${feedId}`, {
@@ -41,14 +23,17 @@ function usePosts() {
         })
         .then((response) => {
           setPosts(response.data);
+          console.log(feedId)
+          console.log(apiKey)
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }, []);
-
+    }, [feedId, apiKey]); // Add feedId and apiKey as dependencies
   }
-  return { posts, selectedArticle, handleArticleClick, handleCloseModal, getAllPosts, getPostsForFeed };
+
+  return { posts, selectedArticle, handleArticleClick, handleCloseModal, setPosts, getPostsForFeed };
 }
 
 export default usePosts;
