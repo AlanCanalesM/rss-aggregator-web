@@ -18,13 +18,32 @@ function useFeeds() {
   }, []);
   }
 
-  function getFeedsFollows(){
+  function getFeedsFollows(apiKey){
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:8080/v1/feed_follows", {
+          headers: {
+            Authorization: `ApiKey ${apiKey}`,
+          },
+        })
+        .then((response) => {
+          setFeedsFollows(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
+  }
+
+  function getFeedsNotFollows(){
 
     useEffect(() => {
       axios
         .get("http://localhost:8080/v1/feeds")
         .then((response) => {
-          setFeedsFollows(response.data);
+          setFeedsNotFollows(response.data);
           console.log(response.data);
         })
         .catch((error) => {

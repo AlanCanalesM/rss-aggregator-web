@@ -4,13 +4,13 @@ import SideBarMenu from '../SideBarMenu/SideBarMenu';
 import FeedList from '../FeedList/FeedList';
 
 
-function SideBar({apikey, setSelectedFeedId}) {
+function SideBar({apikey, setSelectedFeedId, feedsNotFollowedView, setFeedsNotFollowedView, handleFeedClick}) {
 
     return (
         <div className={SideBarStyles.container}>
             <SideBarTitle />
-            <SideBarMenu />
-            <FeedList apikey={apikey} setSelectedFeedId={setSelectedFeedId}/>
+            <SideBarMenu  setFeedsNotFollowedView={setFeedsNotFollowedView}/>
+            <FeedList apikey={apikey} setSelectedFeedId={setSelectedFeedId} handleFeedClick={handleFeedClick}/>
         </div>
     )
 }

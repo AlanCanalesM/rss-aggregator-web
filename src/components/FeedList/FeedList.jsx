@@ -2,11 +2,11 @@ import FeedListStyle from './FeedList.module.css';
 import Feed from '../Feed/Feed';
 import useFeeds from '../../hooks/useFeeds';
 
-function FeedList({ apikey, setSelectedFeedId }) {
+function FeedList({ apikey, setSelectedFeedId, handleFeedClick }) {
 
     const { getFeedsFollows, feedsFollows } = useFeeds();
 
-    getFeedsFollows();
+    getFeedsFollows(apikey);
 
  
     return (
@@ -14,14 +14,14 @@ function FeedList({ apikey, setSelectedFeedId }) {
         <div className={FeedListStyle.list}>
             {feedsFollows.map((data) => (
                 <Feed
-                    key={data.id} // Use a unique key for each item when mapping
-                    name={data.name}
-                    onClick={() => setSelectedFeedId(data.id)}
+                    key={data.feed_id} 
+                    name={data.feed_name}
+                    onClick={() => handleFeedClick(data.feed_id)}
                 />
             
             ))}
         </div>
-        <button>Add new feed</button>
+        {/* <button>Add new feed</button> */}
         </>
     )
 }
