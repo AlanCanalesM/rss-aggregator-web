@@ -45,8 +45,7 @@ function useFeeds(apiKey) {
   }, [apiKey]);
 
   const followFeed = (feedId, feedName) => {
-    console.log(feedId);
-    console.log(feedName);
+    
     axios
       .post(
         "http://localhost:8080/v1/feed_follows",
@@ -69,7 +68,24 @@ function useFeeds(apiKey) {
       });
   };
 
-  return { feeds, feedsFollows, feedsNotFollows, followFeed };
+  const unFollowFeed = (feedId) => {
+    console.log(apiKey['apikey']);
+    axios
+      .delete(`http://localhost:8080/v1/feed_follows/${feedId}`, {
+        headers: {
+          Authorization: `ApiKey 840934fdf0d1eee126995b106b9aba2a1f4f1ff4001b52e71894578e7d8ec07f`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        // You might want to update state based on the response if needed
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return { feeds, feedsFollows, feedsNotFollows, followFeed, unFollowFeed };
 }
 
 export default useFeeds;

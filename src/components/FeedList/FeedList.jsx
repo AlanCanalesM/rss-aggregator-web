@@ -16,6 +16,8 @@ function FeedList({ apikey, setSelectedFeedId, handleFeedClick }) {
                     key={data.feed_id} 
                     name={data.feed_name}
                     onClick={() => handleFeedClick(data.feed_id)}
+                    apikey={apikey}
+                    feedId={data.feed_id}
                 />
             
             ))}
