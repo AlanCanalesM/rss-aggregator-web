@@ -1,0 +1,46 @@
+/* FeedNotFollowedDiv.module.css */
+.feedItem {
+  width: 40%;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+
+.h1 {
+  max-height: 1.5em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.feedItem p {
+  margin: 5px 0; /* Adjust spacing between paragraphs */
+}
+
+.feedItem button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #2441e0; /* Green color, you can change it */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.feedItem button:hover {
+  background-color: #1b2870; /* Darker green on hover */
+}
+
+.feedItem:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,4 @@
+.container {
+    flex: 4; /* Takes up 80% of the available space */
+    background-color: #ffffff; /* Add your desired background color */
+  }

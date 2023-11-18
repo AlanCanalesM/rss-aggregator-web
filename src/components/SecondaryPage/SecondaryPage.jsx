@@ -12,7 +12,10 @@ function SecondaryPage({ apikey, username, selectedFeedId, feedsNotFollowedView,
     <div className={SecondaryPageStyle.container}>
       {feedsNotFollowedView ? (
         // Render FeedNotFollowed component when feedsNotFollowedView is true
-        <FeedNotFollowed />
+        <>
+        <Header username={username} />
+        <FeedNotFollowed apikey={apikey}/>
+        </>
       ) : (
         // Render the other part of your code when feedsNotFollowedView is false
         <>

@@ -3,6 +3,7 @@ import axios from "axios";
 function useFeeds() {
   const [feeds, setFeeds] = useState([]);
   const [feedsFollows, setFeedsFollows] = useState([]);
+  const [feedsNotFollows, setFeedsNotFollows] = useState([]);
 
   function getFeeds(){
   useEffect(() => {
@@ -41,7 +42,12 @@ function useFeeds() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:8080/v1/feeds")
+        .get("http://localhost:8080/v1/feeds_not_followed",
+        {
+          headers: {
+            Authorization: `ApiKey 840934fdf0d1eee126995b106b9aba2a1f4f1ff4001b52e71894578e7d8ec07f`,
+          },
+        })
         .then((response) => {
           setFeedsNotFollows(response.data);
           console.log(response.data);
@@ -52,7 +58,7 @@ function useFeeds() {
     }, []);
   }
 
-  return { feeds, getFeeds, feedsFollows, getFeedsFollows };
+  return { feeds, getFeeds, feedsFollows, getFeedsFollows, getFeedsNotFollows, feedsNotFollows };
 }
 
 export default useFeeds;
