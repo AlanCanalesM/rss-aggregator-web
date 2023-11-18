@@ -4,9 +4,8 @@ import useFeeds from '../../hooks/useFeeds';
 
 function FeedList({ apikey, setSelectedFeedId, handleFeedClick }) {
 
-    const { getFeedsFollows, feedsFollows } = useFeeds();
+    const {feedsFollows } = useFeeds(apikey);
 
-    getFeedsFollows(apikey);
 
  
     return (

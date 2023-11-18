@@ -1,64 +1,75 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-function useFeeds() {
+
+function useFeeds(apiKey) {
   const [feeds, setFeeds] = useState([]);
   const [feedsFollows, setFeedsFollows] = useState([]);
   const [feedsNotFollows, setFeedsNotFollows] = useState([]);
 
-  function getFeeds(){
   useEffect(() => {
     axios
       .get("http://localhost:8080/v1/feeds")
       .then((response) => {
         setFeeds(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  }
 
-  function getFeedsFollows(apiKey){
+    axios
+      .get("http://localhost:8080/v1/feed_follows", {
+        headers: {
+          Authorization: `ApiKey ${apiKey}`,
+        },
+      })
+      .then((response) => {
+        setFeedsFollows(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    useEffect(() => {
-      axios
-        .get("http://localhost:8080/v1/feed_follows", {
-          headers: {
-            Authorization: `ApiKey ${apiKey}`,
-          },
-        })
-        .then((response) => {
-          setFeedsFollows(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, []);
-  }
+      console.log(apiKey['apikey']);
+    axios
+      .get("http://localhost:8080/v1/feeds_not_followed", {
+        headers: {
+          Authorization: `ApiKey ${apiKey['apikey']}`,
+        },
+      })
+      .then((response) => {
+        setFeedsNotFollows(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [apiKey]);
 
-  function getFeedsNotFollows(){
-
-    useEffect(() => {
-      axios
-        .get("http://localhost:8080/v1/feeds_not_followed",
+  const followFeed = (feedId, feedName) => {
+    console.log(feedId);
+    console.log(feedName);
+    axios
+      .post(
+        "http://localhost:8080/v1/feed_follows",
+        {
+          feed_id: feedId,
+          feed_name: feedName,
+        },
         {
           headers: {
-            Authorization: `ApiKey 840934fdf0d1eee126995b106b9aba2a1f4f1ff4001b52e71894578e7d8ec07f`,
+            Authorization: `ApiKey ${apiKey['apikey']}`,
           },
-        })
-        .then((response) => {
-          setFeedsNotFollows(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, []);
-  }
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        // You might want to update state based on the response if needed
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  return { feeds, getFeeds, feedsFollows, getFeedsFollows, getFeedsNotFollows, feedsNotFollows };
+  return { feeds, feedsFollows, feedsNotFollows, followFeed };
 }
 
 export default useFeeds;

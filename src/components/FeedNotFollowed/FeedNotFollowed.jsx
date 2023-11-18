@@ -5,10 +5,9 @@ import styles from "./FeedNotFollowed.module.css";
 import useFeeds from "../../hooks/useFeeds";
 
 function FeedNotFollowed(apikey) {
+   //console.log(apikey);
+   const {feedsNotFollows} = useFeeds(apikey);
 
-   const {feedsNotFollows, getFeedsNotFollows} = useFeeds();
-
-   getFeedsNotFollows();
 
 
   return (
@@ -20,6 +19,8 @@ function FeedNotFollowed(apikey) {
           name={data.name}
           url={data.url}
           createdAt={data.created_at}
+          apikey={apikey}
+          id={data.id}
         />
       ))}
     </div>
