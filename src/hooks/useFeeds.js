@@ -6,7 +6,9 @@ function useFeeds(apiKey) {
   const [feedsFollows, setFeedsFollows] = useState([]);
   const [feedsNotFollows, setFeedsNotFollows] = useState([]);
 
-  useEffect(() => {
+  const fetchData = () => {
+    console.log("executing fetch data");
+    // Fetch data from the API and update state
     axios
       .get("http://localhost:8080/v1/feeds")
       .then((response) => {
@@ -29,11 +31,10 @@ function useFeeds(apiKey) {
         console.log(error);
       });
 
-      console.log(apiKey['apikey']);
     axios
       .get("http://localhost:8080/v1/feeds_not_followed", {
         headers: {
-          Authorization: `ApiKey ${apiKey['apikey']}`,
+          Authorization: `ApiKey ${apiKey}`,
         },
       })
       .then((response) => {
@@ -42,10 +43,13 @@ function useFeeds(apiKey) {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    fetchData(); // Fetch data on mount
   }, [apiKey]);
 
   const followFeed = (feedId, feedName) => {
-    
     axios
       .post(
         "http://localhost:8080/v1/feed_follows",
@@ -55,13 +59,13 @@ function useFeeds(apiKey) {
         },
         {
           headers: {
-            Authorization: `ApiKey ${apiKey['apikey']}`,
+            Authorization: `ApiKey ${apiKey}`,
           },
         }
       )
       .then((response) => {
-        console.log(response.data);
-        // You might want to update state based on the response if needed
+        // console.log(response.data);
+        fetchData(); // Refresh data after a successful follow
       })
       .catch((error) => {
         console.log(error);
@@ -69,16 +73,15 @@ function useFeeds(apiKey) {
   };
 
   const unFollowFeed = (feedId) => {
-    console.log(apiKey['apikey']);
     axios
       .delete(`http://localhost:8080/v1/feed_follows/${feedId}`, {
         headers: {
-          Authorization: `ApiKey 840934fdf0d1eee126995b106b9aba2a1f4f1ff4001b52e71894578e7d8ec07f`,
+          Authorization: `ApiKey ${apiKey}`,
         },
       })
       .then((response) => {
-        console.log(response.data);
-        // You might want to update state based on the response if needed
+        // console.log(response.data);
+        fetchData(); // Refresh data after a successful unfollow
       })
       .catch((error) => {
         console.log(error);

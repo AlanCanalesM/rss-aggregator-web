@@ -23,9 +23,9 @@ function usePosts() {
         })
         .then((response) => {
           setPosts(response.data);
-          console.log(feedId)
-          console.log(apiKey)
-          console.log(response.data);
+          // console.log(feedId)
+          // console.log(apiKey)
+          // console.log(response.data);
         })
         .catch((error) => {
           console.log(error);

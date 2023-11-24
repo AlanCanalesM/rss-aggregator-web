@@ -5,7 +5,7 @@ import useFeeds from "../../hooks/useFeeds";
 
 function FeedNotFollowedDiv({name, url, createdAt, apikey, id}) {
 
-  const {followFeed} = useFeeds(apikey);
+  const {followFeed} = useFeeds(apikey['apikey']);
   
   // function handleFollowClick() {
   //   console.log("follow clicked")
