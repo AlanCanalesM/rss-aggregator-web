@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SecondaryPage from "../../components/SecondaryPage/SecondaryPage"
 import SideBar from "../../components/SideBar/SideBar"
-import { useLocation } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 
 
 function HomePage(){
@@ -11,6 +11,7 @@ function HomePage(){
     const [feedsNotFollowedView, setFeedsNotFollowedView] = useState();
     const apikey = user["apikey"]
     const username = user["username"]
+    const [aux, setAux] = useState(0);
 
     function handleFeedClick(feed_id) {
         setSelectedFeedId(feed_id)
@@ -19,8 +20,8 @@ function HomePage(){
 
     return(
         <>
-        <SideBar apikey={apikey} setSelectedFeedId={setSelectedFeedId} feedsNotFollowedView={feedsNotFollowedView} setFeedsNotFollowedView={setFeedsNotFollowedView} handleFeedClick={handleFeedClick}/>
-        <SecondaryPage apikey={apikey} username={username} selectedFeedId={selectedFeedId} feedsNotFollowedView={feedsNotFollowedView} setFeedsNotFollowedView={setFeedsNotFollowedView}/>
+        <SideBar apikey={apikey} setSelectedFeedId={setSelectedFeedId} feedsNotFollowedView={feedsNotFollowedView} setFeedsNotFollowedView={setFeedsNotFollowedView} handleFeedClick={handleFeedClick} aux={aux} setAux={setAux}/>
+        <SecondaryPage apikey={apikey} username={username} selectedFeedId={selectedFeedId} feedsNotFollowedView={feedsNotFollowedView} setFeedsNotFollowedView={setFeedsNotFollowedView} aux={aux} setAux={setAux}/>
         </>
     )
 }

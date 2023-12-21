@@ -4,18 +4,8 @@ import FeedStyle from "./Feed.module.css";
 import feedicon from "../../assets/rssicon.png";
 import useFeeds from "../../hooks/useFeeds";
 
-function Feed({ name, onClick, apikey, feedId }) {
+function Feed({ name, onClick, apikey, feedId, handleUnfollow }) {
 
-    const {unFollowFeed} = useFeeds(apikey);
-    
-    const handleUnfollowClick = (e) => {
-        unFollowFeed(feedId);
-        // Stop the event propagation to prevent the click on the button from triggering the whole item's click event
-        e.stopPropagation();
-        
-        
-        
-    };
 
     return (
         <div className={FeedStyle.feed} onClick={onClick}>
@@ -23,10 +13,11 @@ function Feed({ name, onClick, apikey, feedId }) {
 
             <div className={FeedStyle.title}>
                 {name}
-                <button className={FeedStyle.unfollowButton} onClick={handleUnfollowClick}>
+                
+            </div>
+            <button className={FeedStyle.unfollowButton} onClick={handleUnfollow}>
                     Unfollow
                 </button>
-            </div>
         </div>
     );
 }

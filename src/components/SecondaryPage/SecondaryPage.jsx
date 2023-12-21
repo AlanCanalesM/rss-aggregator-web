@@ -2,10 +2,9 @@ import SecondaryPageStyle from "./SecondaryPage.module.css";
 import ArticleBoxList from "../ArticleBoxList/ArticleBoxList";
 import Header from "../Header/Header";
 import FeedNotFollowed from "../FeedNotFollowed/FeedNotFollowed";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-function SecondaryPage({ apikey, username, selectedFeedId, feedsNotFollowedView, setFeedsNotFollowedView }) {
+
+function SecondaryPage({ apikey, username, selectedFeedId, feedsNotFollowedView, setFeedsNotFollowedView, aux, setAux }) {
  
 
   return (
@@ -14,7 +13,7 @@ function SecondaryPage({ apikey, username, selectedFeedId, feedsNotFollowedView,
         // Render FeedNotFollowed component when feedsNotFollowedView is true
         <>
         <Header username={username} />
-        <FeedNotFollowed apikey={apikey}/>
+        <FeedNotFollowed apikey={apikey} aux={aux} setAux={setAux}/>
         </>
       ) : (
         // Render the other part of your code when feedsNotFollowedView is false

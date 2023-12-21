@@ -33,8 +33,9 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin: 1rem;
-    font-size: 2rem;
+    bottom: 0rem;
+    margin: 5rem 15rem 0rem 20rem;
+    font-size: 3rem;
     cursor: pointer;
   }
   

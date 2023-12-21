@@ -25,6 +25,7 @@
     font-weight: 500;
     margin-left: 2rem;
     position: relative;
+    width: 100%;
   }
   
   .unfollowButton {
@@ -37,6 +38,8 @@
     font-size: 12px;
     margin-left: 7rem;
     transition: background-color 0.3s ease-in-out;
+    width: auto;
+    height: 1.5rem;
   }
   
   .unfollowButton:hover {
